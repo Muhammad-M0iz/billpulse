@@ -1,0 +1,20 @@
+[project]
+name = "todo-fastapi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "aiofiles>=25.1.0",
+    "aiosqlite>=0.22.1",
+    "alembic>=1.18.5",
+    "boto3>=1.43.64",
+    "fastapi[standard]>=0.139.2",
+    "pwdlib[argon2]>=0.3.0",
+    "pydantic-settings>=2.14.2",
+    "pyjwt>=2.13.0",
+    "sendgrid>=6.12.5",
+]
+
+[tool.fastapi]
+entrypoint = 'app.main:app'

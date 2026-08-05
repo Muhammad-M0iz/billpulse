@@ -1,0 +1,29 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Database & Uploads
+test.db
+*.sqlite3
+
+# Environment & Secrets
+.env
+
+# Node & Frontend
+node_modules/
+frontend/dist/
+frontend/node_modules/
+.vercel
+
+# IDE & Gemini
+.antigravity/
+.gemini/

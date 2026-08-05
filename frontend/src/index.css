@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #0b0f19;
+    --border-hairline: #1e293b;
+    --border-light: #334155;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+  }
+
+  body {
+    background-color: #0b0f19;
+    background-image: 
+      linear-gradient(to right, #1e293b 1px, transparent 1px),
+      linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    color: #dfe2ef;
+    font-family: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Explicit Stitch Background Grid Utility */
+.stitch-bg-grid {
+  background-color: #0b0f19;
+  background-image: 
+    linear-gradient(to right, #1e293b 1px, transparent 1px),
+    linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+.grid-mask {
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* Stitch Material Symbols Outlined */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Hairline & Stitch Utilities */
+.hairline-border {
+  border: 1px solid #1e293b;
+}
+
+.hairline-border:hover {
+  border-color: #444748;
+}
+
+.input-bottom-border {
+  border-bottom: 1px solid #1e293b;
+  transition: border-color 0.3s ease;
+}
+
+.input-bottom-border:focus-within {
+  border-bottom-color: #ffffff;
+}
+
+.input-underline {
+  border: none;
+  border-bottom: 1px solid #1e293b;
+  background: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.input-underline:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom-color: #ffffff;
+}
+
+.active-role {
+  background-color: #ffffff;
+  color: #0b0f19;
+}
+
+.inactive-role {
+  border: 1px solid #1e293b;
+  color: #c4c7c8;
+}
+
+.minimal-card {
+  background-color: #181b25;
+  border: 1px solid #1e293b;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.minimal-card:hover {
+  border-color: #334155;
+}
+
+.glass-panel {
+  background: rgba(24, 27, 37, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.font-mono-data {
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
