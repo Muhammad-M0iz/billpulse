@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.exceptions import APIError, UserAlreadyExistsException
 from app.core.security import hash_password, verify_password
 from app.core.validators import IMAGE_VALIDATOR
+from app.models.user import User
 from app.repositories.user import UserRepository
 from app.schemas.user import UserCreate, UserLogin
 from app.services.storage.base import AbstractStorageService
@@ -42,4 +43,3 @@ class UserService:
 
     async def get_all_users(self, role: str | None = None) -> list[User]:
         return await self.repo.get_all_users(role=role)
-
