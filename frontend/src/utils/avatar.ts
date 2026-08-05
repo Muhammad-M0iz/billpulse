@@ -25,5 +25,6 @@ export const getAvatarUrl = (profileImg?: string | null): string | null => {
     return `http://localhost:8000${cleanPath}`;
   }
 
-  return encodeURI(cleanPath);
+  const backendUrl = import.meta.env.VITE_API_BASE_URL || '';
+  return encodeURI(`${backendUrl}${cleanPath}`);
 };

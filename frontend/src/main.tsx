@@ -7,8 +7,10 @@ import { AuthProvider } from './context/AuthContext';
 import './index.css';
 import App from './App.tsx';
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
+
 client.setConfig({
-  baseUrl: '',
+  baseUrl: apiBaseUrl,
 });
 
 // Interceptor to append Bearer token automatically to every outgoing API request
