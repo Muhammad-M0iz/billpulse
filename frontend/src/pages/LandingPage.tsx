@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { usePlans } from "../hooks/usePlans";
 import { PlanCard } from "../components/buyer/PlanCard";
 import { LoadingSpinner } from "../components/common/LoadingSpinner";
+import { useAuth } from "../hooks/useAuth";
 
 export const LandingPage: React.FC = () => {
   const { plans, isLoading } = usePlans();
+  const { isAuthenticated, isAdmin, logout } = useAuth();
 
   return (
     <div className="min-h-screen stitch-bg-grid text-[#dfe2ef] flex flex-col justify-between selection:bg-white selection:text-black">
@@ -30,18 +32,37 @@ export const LandingPage: React.FC = () => {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <Link
-              to="/login"
-              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white transition-colors"
-            >
-              Sign In
-            </Link>
-            <Link
-              to="/register"
-              className="px-5 py-2 bg-white text-[#0b0f19] font-semibold text-xs uppercase tracking-wider rounded-none transition-all hover:bg-slate-200"
-            >
-              Register
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link
+                  to={isAdmin ? "/admin/dashboard" : "/buyer/dashboard"}
+                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white transition-colors"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={() => logout()}
+                  className="px-5 py-2 border border-[#1e293b] text-white font-semibold text-xs uppercase tracking-wider rounded-none transition-all hover:border-white"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white transition-colors"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/register"
+                  className="px-5 py-2 bg-white text-[#0b0f19] font-semibold text-xs uppercase tracking-wider rounded-none transition-all hover:bg-slate-200"
+                >
+                  Register
+                </Link>
+              </>
+            )}
           </div>
         </nav>
       </header>
@@ -67,12 +88,21 @@ export const LandingPage: React.FC = () => {
             >
               Browse Subscription Plans
             </a>
-            <Link
-              to="/login"
-              className="px-8 py-3.5 border border-[#1e293b] text-white text-xs font-semibold uppercase tracking-wider transition-all hover:border-white"
-            >
-              Sign In
-            </Link>
+            {isAuthenticated ? (
+              <Link
+                to={isAdmin ? "/admin/dashboard" : "/buyer/dashboard"}
+                className="px-8 py-3.5 border border-[#1e293b] text-white text-xs font-semibold uppercase tracking-wider transition-all hover:border-white"
+              >
+                Go to Dashboard
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="px-8 py-3.5 border border-[#1e293b] text-white text-xs font-semibold uppercase tracking-wider transition-all hover:border-white"
+              >
+                Sign In
+              </Link>
+            )}
           </div>
         </section>
 
@@ -215,12 +245,21 @@ export const LandingPage: React.FC = () => {
               Integrated metering and billing that scales from your first user to IPO.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4 pt-4">
-              <Link
-                to="/register"
-                className="px-10 py-3.5 bg-white text-[#0b0f19] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-[1.02]"
-              >
-                Register Account
-              </Link>
+              {isAuthenticated ? (
+                <Link
+                  to={isAdmin ? "/admin/dashboard" : "/buyer/dashboard"}
+                  className="px-10 py-3.5 bg-white text-[#0b0f19] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-[1.02]"
+                >
+                  Go to Dashboard
+                </Link>
+              ) : (
+                <Link
+                  to="/register"
+                  className="px-10 py-3.5 bg-white text-[#0b0f19] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-[1.02]"
+                >
+                  Register Account
+                </Link>
+              )}
             </div>
           </div>
           {/* Subtle Ambient Light */}
