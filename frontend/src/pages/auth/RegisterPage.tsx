@@ -1,8 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { RegisterForm } from "../../components/auth/RegisterForm";
+import { useAuth } from "../../hooks/useAuth";
 
 export const RegisterPage: React.FC = () => {
+  const { isAuthenticated, isAdmin } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(isAdmin ? "/admin/dashboard" : "/buyer/dashboard", { replace: true });
+    }
+  }, [isAuthenticated, isAdmin, navigate]);
+
   return (
     <div className="min-h-screen stitch-bg-grid text-[#dfe2ef] flex flex-col justify-between selection:bg-white selection:text-black">
       {/* Header */}
